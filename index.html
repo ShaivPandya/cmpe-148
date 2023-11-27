@@ -19,10 +19,10 @@
       </span>
     </div>
 
-    <button id="webcamButton">Start video/audio</button>
-    <button id="micButton" disabled>Mute</button>
-    <button id="toggleVideoButton" disabled>Disable Video</button>
-    <button id="hangupButton" disabled>End Call</button>
+    <button id="webcamButton" class="btn btn-info">Start video/audio</button>
+    <button id="micButton" class="btn btn-warning" disabled>Mute</button>
+    <button id="toggleVideoButton" class="btn btn-secondary" disabled>Disable Video</button>
+    <button id="hangupButton" class="btn btn-danger" disabled>End Call</button>
     
     <table>
       <tr>
@@ -35,11 +35,11 @@
       </tr>
       <tr>
         <td>
-          <button id="callButton" disabled>Create Call</button>
+          <button id="callButton" class="btn btn-outline-primary" disabled>Create Call</button>
         </td>
         <td>
           <input id="callInput" placeholder="Call ID"/>
-          <button id="answerButton" disabled>Join Call</button>
+          <button id="answerButton" class="btn btn-primary" disabled>Join Call</button>
         </td>
       </tr>
     </table>
