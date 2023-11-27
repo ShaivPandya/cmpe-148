@@ -73,6 +73,7 @@ webcamButton.onclick = async () => {
   webcamButton.disabled = true;
   micButton.disabled = false;
   toggleVideoButton.disabled = false;
+  hangupButton.disabled = false;
 };
 
 // Function to handle mute/unmute toggle
@@ -101,7 +102,6 @@ function toggleVideo() {
   // Update the button text based on video state
   toggleVideoButton.innerText = isVideoEnabled ? 'Disable Video' : 'Enable Video';
 }
-
 // Add click event listener to the toggleVideoButton
 toggleVideoButton.addEventListener('click', toggleVideo);
 
@@ -188,3 +188,29 @@ answerButton.onclick = async () => {
     });
   });
 };
+
+// Function to handle hang-up
+function hangup() {
+  // Stop the local stream tracks
+  localStream.getTracks().forEach((track) => track.stop());
+
+  // Close the peer connection (assuming 'pc' is your peer connection variable)
+  if (pc) {
+    pc.close();
+  }
+
+  // Reset video elements
+  webcamVideo.srcObject = null;
+  remoteVideo.srcObject = null;
+
+  // Disable buttons as needed
+  callButton.disabled = true;
+  answerButton.disabled = true;
+  webcamButton.disabled = false;
+  micButton.disabled = true;
+  toggleVideoButton.disabled = true;
+  hangupButton.disabled = true;
+}
+
+// Add click event listener to the hangupButton
+hangupButton.addEventListener('click', hangup);
