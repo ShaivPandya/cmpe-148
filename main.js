@@ -71,6 +71,8 @@ webcamButton.onclick = async () => {
   callButton.disabled = false;
   answerButton.disabled = false;
   webcamButton.disabled = true;
+  micButton.disabled = false;
+  toggleVideoButton.disabled = false;
 };
 
 // Function to handle mute/unmute toggle
