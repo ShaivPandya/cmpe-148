@@ -202,10 +202,14 @@ function hangup() {
   webcamVideo.srcObject = null;
   remoteVideo.srcObject = null;
 
+  callInput.value = '';
+
   // Disable buttons as needed
   callButton.disabled = true;
   answerButton.disabled = true;
   webcamButton.disabled = false;
+  toggleVideoButton.innerText = 'Disable Video';
+  micButton.innerText = 'Mute';
   micButton.disabled = true;
   toggleVideoButton.disabled = true;
   hangupButton.disabled = true;
