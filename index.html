@@ -4,17 +4,17 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>WebRTC Demo</title>
+    <title>Video Chat App</title>
   </head>
   <body>
     <h2>1. Start your Webcam</h2>
     <div class="videos">
       <span>
-        <h3>Local Stream</h3>
+        <h3>You</h3>
         <video id="webcamVideo" autoplay playsinline></video>
       </span>
       <span>
-        <h3>Remote Stream</h3>
+        <h3>Guest</h3>
         <video id="remoteVideo" autoplay playsinline></video>
       </span>
 
@@ -22,6 +22,7 @@
     </div>
 
     <button id="webcamButton">Start webcam</button>
+    <button id="micButton">Mute</button>
     <h2>2. Create a new Call</h2>
     <button id="callButton" disabled>Create Call (offer)</button>
 

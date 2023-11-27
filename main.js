@@ -33,9 +33,11 @@ const servers = {
 const pc = new RTCPeerConnection(servers);
 let localStream = null;
 let remoteStream = null;
+let isMuted = false;
 
 // HTML elements
 const webcamButton = document.getElementById('webcamButton');
+const micButton = document.getElementById('micButton')
 const webcamVideo = document.getElementById('webcamVideo');
 const callButton = document.getElementById('callButton');
 const callInput = document.getElementById('callInput');
@@ -44,9 +46,9 @@ const remoteVideo = document.getElementById('remoteVideo');
 const hangupButton = document.getElementById('hangupButton');
 
 // 1. Setup media sources
-
 webcamButton.onclick = async () => {
   localStream = await navigator.mediaDevices.getUserMedia({ video: true, audio: true });
+  console.log(localStream)
   remoteStream = new MediaStream();
 
   // Push tracks from local stream to peer connection
@@ -68,6 +70,19 @@ webcamButton.onclick = async () => {
   answerButton.disabled = false;
   webcamButton.disabled = true;
 };
+
+// Function to handle mute/unmute toggle
+function toggleMute() {
+  // Toggle the mute state
+  isMuted = !isMuted;
+  // Mute/unmute the audio tracks in the local stream
+  localStream.getAudioTracks().forEach((track) => {
+    track.enabled = !isMuted;
+  });
+  // Update the button text based on mute state
+  micButton.innerText = isMuted ? 'Unmute' : 'Mute';
+}
+micButton.addEventListener('click', toggleMute);
 
 // 2. Create an offer
 callButton.onclick = async () => {
