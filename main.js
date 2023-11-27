@@ -34,10 +34,12 @@ const pc = new RTCPeerConnection(servers);
 let localStream = null;
 let remoteStream = null;
 let isMuted = false;
+let isVideoEnabled = true;
 
 // HTML elements
 const webcamButton = document.getElementById('webcamButton');
-const micButton = document.getElementById('micButton')
+const micButton = document.getElementById('micButton');
+const toggleVideoButton = document.getElementById('toggleVideoButton');
 const webcamVideo = document.getElementById('webcamVideo');
 const callButton = document.getElementById('callButton');
 const callInput = document.getElementById('callInput');
@@ -83,6 +85,23 @@ function toggleMute() {
   micButton.innerText = isMuted ? 'Unmute' : 'Mute';
 }
 micButton.addEventListener('click', toggleMute);
+
+// Function to handle video toggle
+function toggleVideo() {
+  // Toggle the video state
+  isVideoEnabled = !isVideoEnabled;
+
+  // Enable/disable the video tracks in the local stream
+  localStream.getVideoTracks().forEach((track) => {
+    track.enabled = isVideoEnabled;
+  });
+
+  // Update the button text based on video state
+  toggleVideoButton.innerText = isVideoEnabled ? 'Disable Video' : 'Enable Video';
+}
+
+// Add click event listener to the toggleVideoButton
+toggleVideoButton.addEventListener('click', toggleVideo);
 
 // 2. Create an offer
 callButton.onclick = async () => {
