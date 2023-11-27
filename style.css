@@ -6,7 +6,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin: 80px 10px;
+  margin: 22px;
 }
 
 video {
@@ -20,4 +20,20 @@ video {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+table {
+  width: 100%; /* Make the table fill the width of its container */
+  border-collapse: collapse; /* Collapse table borders */
+  table-layout: fixed; /* Set the table layout to fixed */
+}
+
+th, td {
+  padding: 10px; /* Add padding to cells for better visual appearance */
+  text-align: center; /* Align text in cells to the center */
+  width: 100px; /* Set a fixed width for the columns */
+}
+
+tr {
+  vertical-align: middle; /* Align the content of the row to the middle */
 }
